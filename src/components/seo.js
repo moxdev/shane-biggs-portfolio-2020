@@ -1,48 +1,24 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
+import useSiteMetadata from '../hooks/use-sitemetadata'
 
-function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            siteUrl
-            description
-            author
-            social {
-              name
-              url
-            }
-          }
-        }
-      }
-    `
-  )
+function SEO({ pageTitle, metaDescription, meta, lang }) {
+  const { title, description, author } = useSiteMetadata()
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDesc = metaDescription || description
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={pageTitle}
+      titleTemplate={`%s | ${title}`}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: metaDesc,
         },
         {
           property: `og:title`,
@@ -50,7 +26,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: metaDesc,
         },
         {
           property: `og:type`,
@@ -62,7 +38,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: author,
         },
         {
           name: `twitter:title`,
@@ -70,7 +46,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: metaDesc,
         },
       ].concat(meta)}
     />
@@ -78,16 +54,16 @@ function SEO({ description, lang, meta, title }) {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
   meta: [],
-  description: ``,
+  metaDescription: ``,
+  lang: `en`,
 }
 
 SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
+  pageTitle: PropTypes.string.isRequired,
+  metaDescription: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
+  lang: PropTypes.string,
 }
 
 export default SEO

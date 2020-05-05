@@ -9,7 +9,7 @@ const BlogIndex = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Blog" />
+      <SEO pageTitle="Blog" />
       <div>
         <h1>Awesome MDX Blog</h1>
 

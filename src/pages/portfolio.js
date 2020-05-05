@@ -5,7 +5,7 @@ import SEO from '../components/seo'
 
 const Portfolio = () => (
   <Layout>
-    <SEO title="Portfolio" />
+    <SEO pageTitle="Portfolio" />
     <h1>New Page Template</h1>
   </Layout>
 )

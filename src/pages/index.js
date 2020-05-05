@@ -7,7 +7,7 @@ import Image from '../components/image'
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO pageTitle="Home" />
     <h1>Iron Maiden</h1>
     <p>40 years of metal!</p>
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>

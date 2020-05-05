@@ -5,7 +5,7 @@ import SEO from '../components/seo'
 
 const Uses = () => (
   <Layout>
-    <SEO title="Uses" />
+    <SEO pageTitle="Uses" />
     <h1>Uses</h1>
   </Layout>
 )
