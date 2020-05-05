@@ -7,37 +7,29 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
 import { ThemeProvider } from 'emotion-theming'
 import styled from '@emotion/styled'
+import { Global, css } from '@emotion/core'
 
 import theme from '../theme/theme'
-// Adding global CSS
-import { Global, css } from '@emotion/core'
 import globalStyles from '../theme/global-styles'
 
 import Header from '../components/header'
 import Footer from '../components/footer'
 
-const Content = styled.main`
+const Main = styled.main`
+  background-color: ${(props) => props.theme.color.background_content};
+  margin: 0;
+`
+
+const ContentWrapper = styled.div`
+  width: 960px;
+  max-width: 90vw;
   margin: 0 auto;
-  max-width: 960px;
-  padding: 1.5rem 1rem;
-  background-color: #fff;
+  padding: 2rem 0 4rem;
 `
 
 const Layout = ({ children }) => {
-  // make this into a Hook?
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <>
       <Global
@@ -47,7 +39,9 @@ const Layout = ({ children }) => {
       />
       <ThemeProvider theme={theme}>
         <Header />
-        <Content>{children}</Content>
+        <Main>
+          <ContentWrapper>{children}</ContentWrapper>
+        </Main>
         <Footer />
       </ThemeProvider>
     </>

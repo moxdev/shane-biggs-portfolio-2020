@@ -3,11 +3,11 @@ import React from 'react'
 import Layout from '../layouts/page-layout'
 import SEO from '../components/seo'
 
-const NewPage = () => (
+const Uses = () => (
   <Layout>
-    <SEO title="" />
-    <h1>New Page Template</h1>
+    <SEO title="Uses" />
+    <h1>Uses</h1>
   </Layout>
 )
 
-export default NewPage
+export default Uses

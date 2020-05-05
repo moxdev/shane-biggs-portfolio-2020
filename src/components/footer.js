@@ -2,12 +2,11 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 const FooterWrapper = styled.footer`
-  background: #333;
   padding: 1rem;
-  background-color: ${(props) => props.theme.colors.background_color_body};
+  background-color: ${(props) => props.theme.color.background_body};
 
   a {
-    color: ${(props) => props.theme.colors.color_text_main};
+    color: ${(props) => props.theme.color.text_alt};
   }
 `
 

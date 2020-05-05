@@ -1,16 +1,22 @@
 import React from 'react'
-import styled from '@emotion/styled'
+import { css } from '@emotion/core'
+
+import Logo from './logo'
 import Navigation from './navigation'
 
-const HeaderWrapper = styled.header`
-  background: #333;
-  padding: 1rem;
-`
-
 const Header = () => (
-  <HeaderWrapper>
+  <header
+    css={css`
+      background: #374949;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem calc((100vw - 960px - 0.5rem) / 2);
+    `}
+  >
+    <Logo />
     <Navigation />
-  </HeaderWrapper>
+  </header>
 )
 
 export default Header

@@ -1,14 +1,15 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
+
 import Layout from '../layouts/page-layout'
+import SEO from '../components/seo'
 
 const BlogIndex = ({ data }) => {
   const { edges: posts } = data.allMdx
 
   return (
     <Layout>
-      <Helmet title="Home | Title" />
+      <SEO title="Blog" />
       <div>
         <h1>Awesome MDX Blog</h1>
 
