@@ -4,9 +4,6 @@ const path = require('path')
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  // you only want to operate on `Mdx` nodes. If you had content from a
-  // remote CMS you could also check to see if the parent node was a
-  // `File` node here
   if (node.internal.type === 'Mdx') {
     const pathToPost = createFilePath({ node, getNode, basePath: `posts` })
     const slug = node.frontmatter.customSlug

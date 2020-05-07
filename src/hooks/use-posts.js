@@ -3,15 +3,15 @@ import { useStaticQuery, graphql } from 'gatsby'
 const usePosts = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMdx(limit: 3) {
+      allMdx {
         nodes {
           id
           excerpt
           frontmatter {
             title
-            date
-            customSlug
+            date(formatString: "MMMM DD, YYYY")
             tags
+            featuredImageAlt
             featuredImage {
               childImageSharp {
                 fluid(maxWidth: 800) {
