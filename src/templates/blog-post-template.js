@@ -4,20 +4,20 @@ import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
-import { Helmet } from 'react-helmet'
 
 import Layout from '../layouts/page-layout'
+import SEO from '../components/seo'
 
 const shortcodes = { Link } // Provide common components here
 
 export default function BlogPostSinglePageTemplate({ data: { mdx } }) {
   return (
     <Layout>
-      <Helmet title="Home | Title" />
+      <SEO pageTitle={mdx.frontmatter.title} />
       <div>
         <h1>{mdx.frontmatter.title}</h1>
         <p>{mdx.frontmatter.date}</p>
-        <p>Time to read: {mdx.timeToRead} minutes</p>
+        <p>{`Time to read: ${mdx.timeToRead} min`}</p>
         {mdx.frontmatter.featuredImage && (
           <Img
             fluid={mdx.frontmatter.featuredImage.childImageSharp.fluid}
@@ -43,7 +43,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         featuredImage {
           childImageSharp {
-            fluid(maxWidth: 800) {
+            fluid {
               ...GatsbyImageSharpFluid
             }
           }

@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 import styled from '@emotion/styled'
 import PropTypes from 'prop-types'
 
-// import ReadLink from '../components/read-link';
+import ReadLink from '../components/read-link'
 
 const Article = styled.article`
   border-bottom: 1px solid #ddd;
@@ -29,7 +29,7 @@ const MostRecentPostCard = ({ post }) => (
       />
     )}
     <p>{post.excerpt}</p>
-    <Link to={post.slug}>read this post &rarr;</Link>
+    <ReadLink to={post.slug}>read this post &rarr;</ReadLink>
   </Article>
 )
 

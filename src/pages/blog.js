@@ -1,57 +1,39 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { Link } from 'gatsby'
+import styled from '@emotion/styled'
+import useAllPosts from '../hooks/use-all-posts'
 
 import Layout from '../layouts/page-layout'
 import SEO from '../components/seo'
+import ReadLink from '../components/read-link'
 
-const BlogIndex = ({ data }) => {
-  const { edges: posts } = data.allMdx
+const BlogList = styled.ul`
+  list-style-type: none;
+  margin: 1.5rem 0;
+  padding: 0;
+`
+
+const BlogIndex = () => {
+  const allPosts = useAllPosts()
 
   return (
     <Layout>
       <SEO pageTitle="Blog" />
-      <div>
-        <h1>Awesome MDX Blog</h1>
+      <h1>All Blog Posts</h1>
 
-        <ul>
-          {posts.map(({ node: post }) => (
-            <li key={post.id}>
-              <Link to={post.fields.slug}>
-                <h2>{post.frontmatter.title}</h2>
-              </Link>
-              <p>{post.excerpt}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <BlogList>
+        {allPosts.map(post => (
+          <li key={post.id}>
+            <Link to={post.slug}>
+              <h2>{post.title}</h2>
+            </Link>
+            <p>{post.excerpt}</p>
+            <ReadLink to={post.slug}>read this post &rarr;</ReadLink>
+          </li>
+        ))}
+      </BlogList>
     </Layout>
   )
 }
-
-export const pageQuery = graphql`
-  query blogIndex {
-    allMdx {
-      edges {
-        node {
-          id
-          excerpt
-          frontmatter {
-            title
-            featuredImage {
-              childImageSharp {
-                fluid(maxWidth: 800) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  }
-`
 
 export default BlogIndex

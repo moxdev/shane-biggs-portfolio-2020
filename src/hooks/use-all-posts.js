@@ -1,12 +1,15 @@
 import { useStaticQuery, graphql } from 'gatsby'
 
-const usePosts = () => {
+const useAllPosts = () => {
   const data = useStaticQuery(graphql`
     query {
       allMdx {
         nodes {
           id
           excerpt
+          fields {
+            slug
+          }
           frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
@@ -14,7 +17,7 @@ const usePosts = () => {
             featuredImageAlt
             featuredImage {
               childImageSharp {
-                fluid(maxWidth: 800) {
+                fluid {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -26,14 +29,15 @@ const usePosts = () => {
   `)
 
   return data.allMdx.nodes.map(post => ({
+    id: post.id,
     title: post.frontmatter.title,
     date: post.frontmatter.date,
-    customSlug: post.frontmatter.customSlug,
-    featuredImage: post.frontmatter.featuredImage,
+    slug: post.fields.slug,
     tag: post.frontmatter.tag,
     excerpt: post.excerpt,
-    id: post.id,
+    featuredImage: post.frontmatter.featuredImage,
+    featuredImageAlt: post.frontmatter.featuredImageAlt,
   }))
 }
 
-export default usePosts
+export default useAllPosts
