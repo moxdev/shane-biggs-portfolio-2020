@@ -11,22 +11,25 @@ import SEO from '../components/seo'
 const shortcodes = { Link } // Provide common components here
 
 export default function BlogPostSinglePageTemplate({ data: { mdx } }) {
+  const { title, date, featuredImage, featuredImageAlt } = mdx.frontmatter
+  const { timeToRead, body } = mdx
+
   return (
     <Layout>
-      <SEO pageTitle={mdx.frontmatter.title} />
+      <SEO pageTitle={title} />
       <div>
-        <h1>{mdx.frontmatter.title}</h1>
-        <p>{mdx.frontmatter.date}</p>
-        <p>{`Time to read: ${mdx.timeToRead} min`}</p>
-        {mdx.frontmatter.featuredImage && (
+        <h1>{title}</h1>
+        <p>{date}</p>
+        <p>{`Time to read: ${timeToRead} min`}</p>
+        {featuredImage && (
           <Img
-            fluid={mdx.frontmatter.featuredImage.childImageSharp.fluid}
-            alt={mdx.frontmatter.featuredImageAlt}
+            fluid={featuredImage.childImageSharp.fluid}
+            alt={featuredImageAlt}
           />
         )}
 
         <MDXProvider components={shortcodes}>
-          <MDXRenderer>{mdx.body}</MDXRenderer>
+          <MDXRenderer>{body}</MDXRenderer>
         </MDXProvider>
       </div>
     </Layout>
@@ -34,7 +37,7 @@ export default function BlogPostSinglePageTemplate({ data: { mdx } }) {
 }
 
 export const pageQuery = graphql`
-  query BlogPostQuery($id: String) {
+  query BlogPostQuery($id: String!) {
     mdx(id: { eq: $id }) {
       id
       body

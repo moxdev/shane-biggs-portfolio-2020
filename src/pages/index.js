@@ -1,6 +1,7 @@
 import React from 'react'
 import useMostRecentPosts from '../hooks/use-most-recent-posts'
 
+import Hero from '../components/hero'
 import Layout from '../layouts/page-layout'
 import SEO from '../components/seo'
 import Image from '../components/image'

@@ -23,7 +23,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({ actions, graphql, reporter }) => {
   // Destructure the createPage function from the actions object
   const { createPage } = actions
 
@@ -43,7 +43,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   `)
 
   if (result.errors) {
-    reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query')
+    reporter.panicOnBuild(
+      '🚨  ERROR: Loading "createPages" query',
+      results.errors
+    )
   }
 
   // Create blog post pages.

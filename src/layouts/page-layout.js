@@ -8,10 +8,11 @@ import theme from '../theme/theme'
 import globalStyles from '../theme/global-styles'
 
 import Header from '../components/header'
+import Hero from '../components/hero'
 import Footer from '../components/footer'
 
 const Main = styled.main`
-  background-color: ${(props) => props.theme.color.background_content};
+  background-color: ${props => props.theme.color.background_content};
   margin: 0;
 `
 
@@ -32,6 +33,7 @@ const Layout = ({ children }) => {
       />
       <ThemeProvider theme={theme}>
         <Header />
+        <Hero />
         <Main>
           <ContentWrapper>{children}</ContentWrapper>
         </Main>

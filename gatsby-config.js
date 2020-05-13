@@ -44,10 +44,19 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `posts`,
-        path: `${__dirname}/content`,
+        path: `${__dirname}/content/posts`,
         // ignore: process.env.NODE_ENV === `production` && [`**/drafts/*`], // ignores drafts folder in production
       },
     },
+    // Post DIR: /content/posts/
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `portfolio`,
+        path: `${__dirname}/content/portfolio`,
+      },
+    },
+    // Post DIR: /content/posts/
     {
       resolve: `gatsby-source-filesystem`,
       options: {

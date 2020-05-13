@@ -7,9 +7,9 @@ const globalStyles = css`
 
   ${normalize}
 
-  * {
+  /* * {
     margin: 0;
-  }
+  } */
 
   * + * {
     margin-top: 1rem;
