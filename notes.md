@@ -15,3 +15,6 @@ const posts = usePosts()
 
 ))}
 ```
+
+## Gatsby Background Image
+[gatsby-background-image](https://www.gatsbyjs.org/packages/gatsby-background-image/)

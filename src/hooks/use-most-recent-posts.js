@@ -17,7 +17,11 @@ const useMostRecentPosts = () => {
             featuredImageAlt
             featuredImage {
               childImageSharp {
-                fluid {
+                fluid(
+                  maxWidth: 300
+                  maxHeight: 300
+                  duotone: { shadow: "#333333", highlight: "#dfe7ea" }
+                ) {
                   ...GatsbyImageSharpFluid
                 }
               }

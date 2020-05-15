@@ -1,10 +1,9 @@
 import React from 'react'
 import useMostRecentPosts from '../hooks/use-most-recent-posts'
 
-import Hero from '../components/hero'
 import Layout from '../layouts/page-layout'
 import SEO from '../components/seo'
-import Image from '../components/image'
+// import Image from '../components/image'
 import MostRecentPostCard from '../components/most-recent-post-card'
 
 const IndexPage = () => {
@@ -14,9 +13,9 @@ const IndexPage = () => {
     <Layout>
       <SEO pageTitle="Home" />
       <h1>Hey look at me!</h1>
-      <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
+      {/* <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
         <Image />
-      </div>
+      </div> */}
 
       <h2>Read my blog</h2>
       {mostRecentPosts.map(post => (
