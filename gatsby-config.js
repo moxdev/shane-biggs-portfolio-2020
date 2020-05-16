@@ -164,19 +164,20 @@ module.exports = {
           bearer_token: twitterAPI.bearerToken,
         },
         queries: {
-          MOXBIGGS: {
-            endpoint: 'statuses/user_timeline',
+          recentTweets: {
+            endpoint: 'search/tweets',
             params: {
-              screen_name: 'moxbiggs',
-              include_rts: true,
-              exclude_replies: true,
+              q: '@moxbiggs',
               tweet_mode: 'extended',
             },
           },
-          nameofanotherthequery: {
-            endpoint: 'search/tweets',
+          moxBiggs: {
+            endpoint: 'statuses/user_timeline',
             params: {
-              q: '#gatsbyjs',
+              id: 158232130,
+              screen_name: 'moxbiggs',
+              include_rts: false,
+              exclude_replies: true,
               tweet_mode: 'extended',
             },
           },

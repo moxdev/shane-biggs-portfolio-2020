@@ -1,5 +1,6 @@
 import React from 'react'
 import useMostRecentPosts from '../hooks/use-most-recent-posts'
+import useMostRecentTweets from '../hooks/use-most-recent-tweets'
 
 import Layout from '../layouts/page-layout'
 import SEO from '../components/seo'
@@ -8,6 +9,7 @@ import MostRecentPostCard from '../components/most-recent-post-card'
 
 const IndexPage = () => {
   const mostRecentPosts = useMostRecentPosts()
+  const mostRecentTweets = useMostRecentTweets()
 
   return (
     <Layout>
@@ -20,6 +22,11 @@ const IndexPage = () => {
       <h2>Read my blog</h2>
       {mostRecentPosts.map(post => (
         <MostRecentPostCard key={post.id} post={post} />
+      ))}
+
+      <h2>Recent Tweets</h2>
+      {mostRecentTweets.map(tweet => (
+        <pre>{JSON.stringify(tweet, null, 2)}</pre>
       ))}
     </Layout>
   )

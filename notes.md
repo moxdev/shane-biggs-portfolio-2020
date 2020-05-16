@@ -18,3 +18,7 @@ const posts = usePosts()
 
 ## Gatsby Background Image
 [gatsby-background-image](https://www.gatsbyjs.org/packages/gatsby-background-image/)
+
+
+## Twitter API
+[gatsby-source-twitter](https://www.gatsbyjs.org/packages/gatsby-source-twitter/)
