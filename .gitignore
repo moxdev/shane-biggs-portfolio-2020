@@ -1,3 +1,7 @@
+# API Keys
+# Twitter
+config-twitter-api.js
+
 # Logs
 logs
 *.log

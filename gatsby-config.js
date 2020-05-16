@@ -1,4 +1,5 @@
 const config = require('./config')
+const twitterAPI = require('./config-twitter-api')
 
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
 
@@ -134,6 +135,15 @@ module.exports = {
               escapeEntities: {},
             },
           },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 960,
+            },
+          },
         ],
       },
     },
@@ -143,6 +153,34 @@ module.exports = {
         useMozJpeg: false,
         stripMetadata: true,
         defaultQuality: 75,
+      },
+    },
+    {
+      resolve: `gatsby-source-twitter`,
+      options: {
+        credentials: {
+          consumer_key: twitterAPI.consumerKey,
+          consumer_secret: twitterAPI.consumerSecret,
+          bearer_token: twitterAPI.bearerToken,
+        },
+        queries: {
+          MOXBIGGS: {
+            endpoint: 'statuses/user_timeline',
+            params: {
+              screen_name: 'moxbiggs',
+              include_rts: true,
+              exclude_replies: true,
+              tweet_mode: 'extended',
+            },
+          },
+          nameofanotherthequery: {
+            endpoint: 'search/tweets',
+            params: {
+              q: '#gatsbyjs',
+              tweet_mode: 'extended',
+            },
+          },
+        },
       },
     },
     {
