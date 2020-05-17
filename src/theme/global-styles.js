@@ -53,5 +53,10 @@ const globalStyles = css`
     margin: 0;
     color: ${theme.color.h1};
   }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 `
 export default globalStyles
