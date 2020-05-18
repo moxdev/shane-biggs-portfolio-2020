@@ -158,10 +158,9 @@ module.exports = {
       resolve: `gatsby-source-twitter`,
       options: {
         credentials: {
-          consumer_key: '7W6YztttElB0xEIdFY0BKZ8XL',
-          consumer_secret: '8GBvPujd1cVA187sY1krz5LfV8uK4MwRrAR84Zpuwr2CWtGOuq',
-          bearer_token:
-            'AAAAAAAAAAAAAAAAAAAAABB%2B2gAAAAAA539%2BvEtDTjd%2By5u2LYRwTCVMPiQ%3DkmbWaAOyFRL3C4UZfGoBzaB2dgZ4Q9Pg9v97fkJrbRj8zTL2iN',
+          consumer_key: '7W6Yzttt',
+          consumer_secret: '8GBvPujd1cVA187',
+          bearer_token: 'AAAAA',
         },
         queries: {
           recentTweets: {
